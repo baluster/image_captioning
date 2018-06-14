@@ -1,5 +1,9 @@
 #!/usr/bin/python
 import tensorflow as tf
+import sys
+sys.path.append("utils/coco/pycocoevalcap")
+sys.path.append("utils/coco/pycocoevalcap/bleu")
+sys.path.append("utils/coco/pycocoevalcap/cider")
 
 from config import Config
 from model import CaptionGenerator
@@ -7,7 +11,7 @@ from dataset import prepare_train_data, prepare_eval_data, prepare_test_data
 
 FLAGS = tf.app.flags.FLAGS
 
-tf.flags.DEFINE_string('phase', 'train',
+tf.flags.DEFINE_string('phase', 'test',
                        'The phase can be train, eval or test')
 
 tf.flags.DEFINE_boolean('load', False,

@@ -46,6 +46,8 @@ class Vocabulary(object):
             in the vocabulary. """
         words = word_tokenize(sentence.lower())
         word_idxs = [self.word2idx[w] for w in words]
+        print(words)
+        print(word_idxs)
         return word_idxs
 
     def get_sentence(self, idxs):

@@ -1,3 +1,4 @@
+import os
 
 class Config(object):
     """ Wrapper class for various (hyper)parameters. """
@@ -41,28 +42,29 @@ class Config(object):
         self.epsilon = 1e-6
 
         # about the saver
+        self.dir = 'D:\\code\\mscoco\\2017'
         self.save_period = 1000
-        self.save_dir = './models/'
-        self.summary_dir = './summary/'
+        self.save_dir = os.path.join(self.dir, 'models')
+        self.summary_dir = os.path.join(self.dir, 'summary')
 
         # about the vocabulary
-        self.vocabulary_file = './vocabulary.csv'
+        self.vocabulary_file =  os.path.join(self.dir, 'vocabulary')
         self.vocabulary_size = 5000
 
         # about the training
-        self.train_image_dir = './train/images/'
-        self.train_caption_file = './train/captions_train2014.json'
-        self.temp_annotation_file = './train/anns.csv'
-        self.temp_data_file = './train/data.npy'
+        self.train_image_dir = os.path.join(self.dir, 'train', 'images')
+        self.train_caption_file = os.path.join(self.dir, 'train', 'captions_train2017.json')
+        self.temp_annotation_file = os.path.join(self.dir, 'train', 'anns.csv')
+        self.temp_data_file = os.path.join(self.dir, 'train', 'data.npy')
 
         # about the evaluation
-        self.eval_image_dir = './val/images/'
-        self.eval_caption_file = './val/captions_val2014.json'
-        self.eval_result_dir = './val/results/'
-        self.eval_result_file = './val/results.json'
+        self.eval_image_dir = os.path.join(self.dir, 'val', 'images')
+        self.eval_caption_file = os.path.join(self.dir, 'val', 'captions_val2017.json')
+        self.eval_result_dir = os.path.join(self.dir, 'val', 'results')
+        self.eval_result_file = os.path.join(self.dir, 'val', 'results.json')
         self.save_eval_result_as_image = False
 
         # about the testing
-        self.test_image_dir = './test/images/'
-        self.test_result_dir = './test/results/'
-        self.test_result_file = './test/results.csv'
+        self.test_image_dir = os.path.join(self.dir, 'test', 'images')
+        self.test_result_dir = os.path.join(self.dir, 'test', 'results')
+        self.test_result_file = os.path.join(self.dir, 'test', 'results.csv')

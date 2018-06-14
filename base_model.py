@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 import tensorflow as tf
 import matplotlib.pyplot as plt
-import cPickle as pickle
+import pickle
 import copy
 import json
 from tqdm import tqdm
@@ -21,9 +21,7 @@ class BaseModel(object):
         self.image_loader = ImageLoader('./utils/ilsvrc_2012_mean.npy')
         self.image_shape = [224, 224, 3]
         self.nn = NN(config)
-        self.global_step = tf.Variable(0,
-                                       name = 'global_step',
-                                       trainable = False)
+        self.global_step = tf.Variable(0,name = 'global_step',trainable = False)
         self.build()
 
     def build(self):
@@ -47,7 +45,7 @@ class BaseModel(object):
                 feed_dict = {self.images: images,
                              self.sentences: sentences,
                              self.masks: masks}
-                _, summary, global_step = sess.run([self.opt_op,
+                _ , summary, global_step = sess.run([self.opt_op,
                                                     self.summary,
                                                     self.global_step],
                                                     feed_dict=feed_dict)
